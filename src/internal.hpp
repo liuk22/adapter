@@ -45,7 +45,9 @@
 
 #define SHUT_RDWR SD_BOTH
 typedef int socklen_t;
+#if _MSC_VER < 1900 /* VS2017+ supports snprintf, redefinition would overwrite (https://github.com/mtconnect/adapter/pull/8)*/
 #define snprintf _snprintf
+#endif 
 #define strdup _strdup
 #define stricmp _stricmp
 #define strdup _strdup
